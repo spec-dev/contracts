@@ -1,6 +1,6 @@
 {
     "name": "@spec.contracts/compound",
-    "version": "0.0.4",
+    "version": "0.0.7",
     "description": "Compound Contracts",
     "keywords": [
         "javascript",
@@ -32,7 +32,7 @@
     },
     "dependencies": {
         "@spec.dev/utils": "^0.0.1",
-        "@spec.types/compound": "^0.0.2",
+        "@spec.types/compound": "^0.0.6",
         "web3": "^1.7.4"
     },
     "devDependencies": {
