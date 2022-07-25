@@ -4,7 +4,7 @@ import addresses from './addresses'
 import { AbiItem } from 'web3-utils'
 import config from '../../config'
 
-const web3 = new Web3(config.ALCHEMY_ETH_REST_URL)
+const web3 = new Web3(config.ALCHEMY_ETH_WS_URL)
 
 function createContract(id: string): cToken.CToken | cETH.CETH {
     const address = addresses[id]
