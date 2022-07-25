@@ -7,8 +7,18 @@ import config from '../../config'
 let provider = new Web3.providers.WebsocketProvider(config.ALCHEMY_ETH_WS_URL)
 const web3 = new Web3(provider)
 
+provider.on('error', () => {
+    console.log('WS error')
+    console.log('Attempting to reconnect...')
+    provider = new Web3.providers.WebsocketProvider(config.ALCHEMY_ETH_WS_URL)
+    provider.on('connect', function () {
+        console.log('WSS Reconnected')
+    })
+    web3.setProvider(provider)
+})
+
 provider.on('end', () => {
-    console.log('WS closed')
+    console.log('WS ended')
     console.log('Attempting to reconnect...')
     provider = new Web3.providers.WebsocketProvider(config.ALCHEMY_ETH_WS_URL)
     provider.on('connect', function () {
