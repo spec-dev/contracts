@@ -4,7 +4,18 @@ import addresses from './addresses'
 import { AbiItem } from 'web3-utils'
 import config from '../../config'
 
-const web3 = new Web3(config.ALCHEMY_ETH_WS_URL)
+let provider = new Web3.providers.WebsocketProvider(config.ALCHEMY_ETH_WS_URL)
+const web3 = new Web3(provider)
+
+provider.on('end', () => {
+    console.log('WS closed')
+    console.log('Attempting to reconnect...')
+    provider = new Web3.providers.WebsocketProvider(config.ALCHEMY_ETH_WS_URL)
+    provider.on('connect', function () {
+        console.log('WSS Reconnected')
+    })
+    web3.setProvider(provider)
+})
 
 function createContract(id: string): cToken.CToken | cETH.CETH {
     const address = addresses[id]

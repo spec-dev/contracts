@@ -1,6 +1,6 @@
 {
     "name": "@spec.contracts/compound",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "description": "Compound Contracts",
     "keywords": [
         "javascript",
