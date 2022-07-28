@@ -11,7 +11,7 @@ const provider = new Web3.providers.WebsocketProvider(config.ALCHEMY_ETH_WS_URL,
     },
     reconnect: {
         auto: true,
-        delay: 2500,
+        delay: 1000,
         onTimeout: true,
     },
 })
